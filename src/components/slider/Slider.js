@@ -9,14 +9,26 @@ const Slider = () => {
     return (
         <div className='slider'>
             <AiOutlineArrowLeft className='arrow prev' />
-            <AiOutlineArrowRight className='arrow next'/>
+            <AiOutlineArrowRight className='arrow next' />
 
             {/* Use map to map over data in slider array. Map must return something. We also need the index # (built in map feature) */}
             {/* We used index for the key property. However, if you are doing something that needs to be added/deleted, do not use index for the key prop value (bc it must be unique) */}
             {sliderData.map((slide, index) => {
                 return (
                     <div className={index === currentSlide ? "slide current" : "slide"} key={index}>
-                        
+                        {/* Saying if the index = current slide, then display the current slide */}
+                        {index === currentSlide && (
+                            // React rule: everything must be housed in 1 return container (fragment in this case. could also use div)
+                            <>
+                                <img src={slide.image} alt="slide" />
+                                <div>
+                                    <h2>{slide.heading}</h2>
+                                    <p>{slide.desc}</p>
+                                    <hr />
+                                    <button className='--btn --btn-primary'>Get Started</button>
+                                </div>
+                            </>
+                        )}
                     </div>
                 )
             })}
