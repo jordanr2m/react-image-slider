@@ -30,12 +30,6 @@
     height: 100%;
 }
 
-/* class for the slide that is currently being viewed */
-.current {
-    opacity: 1; /* shows it */
-    transform: translateX(0); /* put it back in normal position */
-}
-
 .content {
     position: absolute;
     top: 23rem;
@@ -43,7 +37,8 @@
     width: 50%;
     padding: 3rem;
     background-color: rgba(0, 0, 0, 0.3);
-    /* opacity: 0; */
+    /* Hide all content initially */
+    opacity: 0;
     /* visibility: hidden; */
     /* Create animation of slide up effect */
     animation: slide-up 1s ease 0.5s; /* name, duration, style, delay */
@@ -72,4 +67,46 @@
 .content > * {
     color: #fff;
     margin-bottom: 1rem;
+}
+
+/* class for the slide that is currently being viewed */
+.current {
+    opacity: 1; /* shows it */
+    transform: translateX(0); /* put it back in normal position */
+}
+
+.current .content {
+    opacity: 1;
+}
+
+.arrow {
+    border: 2px solid #fff;
+    border-radius: 50%;
+    background-color: transparent;
+    color: #fff;
+    width: 2rem;
+    height: 2rem;
+    cursor: pointer;
+    position: absolute;
+    z-index: 99;
+    top: 35%;
+}
+
+.arrow:hover {
+    background: #fff;
+    color: grey;
+}
+
+.next {
+    right: 1.5rem;
+}
+
+.prev {
+    left: 1.5rem;
+}
+
+hr {
+    height: 2px;
+    background-color: white;
+    width: 50%;
 }
