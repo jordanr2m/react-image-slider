@@ -35,3 +35,19 @@
     opacity: 1; /* shows it */
     transform: translateX(0); /* put it back in normal position */
 }
+
+.content {
+    position: absolute;
+    top: 23rem;
+    left: 5rem;
+    /* opacity: 0; */
+    width: 50%;
+    padding: 3rem;
+    background-color: rgba(0, 0, 0, 0.3);
+}
+
+/* Select all children of content */
+.content > * {
+    color: #fff;
+    margin-bottom: 1rem;
+}

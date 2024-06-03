@@ -21,7 +21,8 @@ const Slider = () => {
                             // React rule: everything must be housed in 1 return container (fragment in this case. could also use div)
                             <>
                                 <img src={slide.image} alt="slide" />
-                                <div>
+                                
+                                <div className="content">
                                     <h2>{slide.heading}</h2>
                                     <p>{slide.desc}</p>
                                     <hr />
