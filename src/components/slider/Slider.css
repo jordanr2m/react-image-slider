@@ -40,10 +40,32 @@
     position: absolute;
     top: 23rem;
     left: 5rem;
-    /* opacity: 0; */
     width: 50%;
     padding: 3rem;
     background-color: rgba(0, 0, 0, 0.3);
+    /* opacity: 0; */
+    /* visibility: hidden; */
+    /* Create animation of slide up effect */
+    animation: slide-up 1s ease 0.5s; /* name, duration, style, delay */
+    animation-fill-mode: forwards;
+}
+
+@keyframes slide-up {
+    0% {
+        visibility: visible;
+        top: 23rem;
+    }
+    100% {
+        visibility: visible;
+        top: 17rem; /* moves it up slightly */
+    }
+}
+
+/* Fix formatting of content div on mobile */
+@media screen and (max-width: 600px) {
+    .content {
+        width: 80%;
+    }
 }
 
 /* Select all children of content */
