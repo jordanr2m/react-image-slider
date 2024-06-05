@@ -14,9 +14,9 @@ const Slider = () => {
         setCurrentSlide(currentSlide === slideLength - 1 ? 0 : currentSlide + 1)
     } 
 
-    // const prevSlide = () => {
-    //     setCurrentSlide(currentSlide - 1)
-    // } 
+    const prevSlide = () => {
+        setCurrentSlide(currentSlide === 0 ? slideLength - 1 : currentSlide - 1)
+    } 
         
     // set currentSlide to 0 on page load
     useEffect(() => {
@@ -25,7 +25,7 @@ const Slider = () => {
 
     return (
         <div className='slider'>
-            <AiOutlineArrowLeft className='arrow prev' />
+            <AiOutlineArrowLeft className='arrow prev' onClick={prevSlide}/>
             <AiOutlineArrowRight className='arrow next' onClick={nextSlide} />
 
             {/* Use map to map over data in slider array. Map must return something. We also need the index # (built in map feature) */}
@@ -33,7 +33,7 @@ const Slider = () => {
             {sliderData.map((slide, index) => {
                 return (
                     <div className={index === currentSlide ? "slide current" : "slide"} key={index}>
-                        {/* Saying if the index = current slide, then display the current slide */}
+                        {/* Saying if the index = current slide, then display it as the current slide */}
                         {index === currentSlide && (
                             // React rule: everything must be housed in 1 return container (fragment in this case. could also use div)
                             <>
