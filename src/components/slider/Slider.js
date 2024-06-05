@@ -10,15 +10,16 @@ const Slider = () => {
     // currentSlide = 0 1 2
 
     const nextSlide = () => {
-        setCurrentSlide(currentSlide + 1)
+        // By subtracting 1, we make sure that currentSlide is equal to slideLength. Saying "if current slide is the last one, set the slide back to 0 AKA back to the beginning"
+        setCurrentSlide(currentSlide === slideLength - 1 ? 0 : currentSlide + 1)
     } 
 
     // const prevSlide = () => {
     //     setCurrentSlide(currentSlide - 1)
     // } 
-
+        
+    // set currentSlide to 0 on page load
     useEffect(() => {
-        // set currentSlide to 0 on page load
         setCurrentSlide(0);
     }, []);
 
