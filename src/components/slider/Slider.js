@@ -9,19 +9,37 @@ const Slider = () => {
     // slideLength = 1 2 3
     // currentSlide = 0 1 2
 
+    // variables for automatic scrolling
+    const autoScroll = true;
+    let intervalTime = 5000; // 5s
+    let slideInterval; // variable to store the setInterval function
+
     const nextSlide = () => {
         // By subtracting 1, we make sure that currentSlide is equal to slideLength. Saying "if current slide is the last one, set the slide back to 0 AKA back to the beginning"
         setCurrentSlide(currentSlide === slideLength - 1 ? 0 : currentSlide + 1)
-    } 
+    };
 
     const prevSlide = () => {
         setCurrentSlide(currentSlide === 0 ? slideLength - 1 : currentSlide - 1)
-    } 
+    };
+
+    // Function for automatic scrolling effect
+    function auto () {
+        slideInterval = setInterval(nextSlide, intervalTime);
+    }
         
     // set currentSlide to 0 on page load
     useEffect(() => {
         setCurrentSlide(0);
     }, []);
+
+    useEffect(() => {
+        if (autoScroll) {
+            auto();
+        }
+        // Add a "clean up function" to prevent problems when using arrow btns. When the slide changes, this cleanup function will run and restart the 5s timer
+        return () => clearInterval(slideInterval);
+    }, [currentSlide]); // Must add a dependency. Saying if the current slide changes, the auto function will fire
 
     return (
         <div className='slider'>
